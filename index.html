@@ -135,26 +135,47 @@ body.jdaLocked{overflow:hidden}.jdaLogout{position:fixed;right:10px;bottom:10px;
 /* V24 SHARE & DOWNLOAD CENTER */
 .shareGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.shareTile{border:1px solid #dbe2eb;border-radius:14px;padding:14px;background:#fff;box-shadow:0 3px 10px #0001}.shareTile h3{margin:0 0 6px;color:var(--jda-navy)}.shareLink{width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccd6e4;border-radius:9px;background:#f7f9fc}.shareNote{font-size:12px;color:#68758a}@media(max-width:700px){.shareGrid{grid-template-columns:1fr 1fr}}
 </style>
-
-<style id="jda-install-ui">
-#jdaInstallBanner{position:fixed;left:10px;right:10px;bottom:12px;z-index:100000;background:#06295b;color:#fff;border:2px solid #ffd21a;border-radius:16px;padding:12px;box-shadow:0 8px 30px #0008;display:none}
-#jdaInstallBanner .row{display:flex;gap:8px;align-items:center;justify-content:space-between}
-#jdaInstallBanner .txt{font-size:13px;line-height:1.35}
-#jdaInstallBanner button{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer}
-#jdaInstallNow{background:#ffd21a;color:#111}.jdaInstallClose{background:#fff;color:#06295b}
+<style id="JDA_FINAL_MOBILE_FIX">
+/* ===== JDA FINAL MOBILE/FULLSCREEN FIX ===== */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0}
+header,main,nav,.top{width:100%;max-width:1100px}
+main{padding-left:10px;padding-right:10px}
+.card,.page,.hero,.hero>*,section,article,form,table,.tableWrap{max-width:100%;min-width:0}
+img,video,canvas,iframe{max-width:100%}
+input,select,textarea,button{max-width:100%;font-size:16px}
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,230px)}
+nav{max-width:100%;overflow-x:auto;overflow-y:hidden}
+.nav{max-width:100%}
+button{white-space:normal}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto;width:100%}
+.card{overflow:hidden}
+@media(max-width:700px){
+  .top{flex-wrap:wrap;align-items:center}
+  .top img{width:48px;height:48px}
+  .top h1{font-size:15px}
+  .top p{font-size:10px}
+  .hero{grid-template-columns:1fr}
+  .heroLogo{height:190px}
+  .director img{height:220px}
+  .directorActions{gap:5px}
+  .photoBtn{padding:8px 9px}
+  .card{padding:10px;border-radius:12px}
+  main{padding:7px}
+  nav{gap:5px}
+  nav button{padding:8px 9px}
+  .grid,.cards,.stats,.dashboard-grid,.form-grid,.two-col,.three-col{
+    grid-template-columns:1fr !important;
+  }
+  .share-grid,.social-grid{grid-template-columns:1fr !important}
+  .modal,.modal-content,.dialog,.popup{width:calc(100vw - 20px) !important;max-width:calc(100vw - 20px) !important}
+}
+@media(display-mode:standalone){
+  header{padding-top:max(9px,env(safe-area-inset-top))}
+}
 </style>
 </head>
-
-<div id="jdaInstallBanner">
-  <div class="row">
-    <div class="txt"><b>📱 JDA Academy App</b><br>इस वेबसाइट को App की तरह Install करें।</div>
-    <div>
-      <button id="jdaInstallNow">Install</button>
-      <button class="jdaInstallClose" id="jdaInstallClose">×</button>
-    </div>
-  </div>
-</div>
-
 <body class="">
 <div id="jdaAuthGate" role="dialog" aria-modal="true" style="display: none;">
   <div class="jdaAuthCard">
@@ -958,48 +979,26 @@ function viewDirectorPhoto(){
   const src=(data.settings&&data.settings.directorPhoto)||'./Director_Moola_Ram.jpg';
   const w=window.open('','_blank'); if(!w)return alert('Popup blocked');
   w.document.write('<title>Director Photo</title><body style="margin:0;background:#111;display:flex;align-items:center;justify-content:center;height:100vh"><img src="'+src+'" style="max-width:95%;max-height:95%;object-fit:contain">
-<script id="jda-pwa-install-fix">
+<script id="JDA_FINAL_PWA_BOOT">
 (function(){
-  let deferredPrompt=null;
-  const banner=document.getElementById('jdaInstallBanner');
-  const installBtn=document.getElementById('jdaInstallNow');
-  const closeBtn=document.getElementById('jdaInstallClose');
-
-  function showInstall(){ if(banner) banner.style.display='block'; }
-  function hideInstall(){ if(banner) banner.style.display='none'; }
-
-  window.addEventListener('beforeinstallprompt', function(e){
-    e.preventDefault();
-    deferredPrompt=e;
-    showInstall();
-    window.jdaDeferredInstallPrompt=e;
+  let deferred=null;
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; window.__JDA_INSTALL_PROMPT=e;
   });
-
-  installBtn?.addEventListener('click', async function(){
-    if(deferredPrompt){
-      deferredPrompt.prompt();
-      const result=await deferredPrompt.userChoice;
-      deferredPrompt=null;
-      hideInstall();
-      return;
+  window.JDA_INSTALL_APP=async function(){
+    if(deferred){
+      deferred.prompt();
+      try{await deferred.userChoice;}catch(_){}
+      deferred=null; window.__JDA_INSTALL_PROMPT=null; return;
     }
-    // On browsers that don't expose the prompt, guide the user to the native menu.
-    alert('Chrome के ⋮ menu में “Install app” चुनें। अगर यह विकल्प नहीं दिखता है तो site को HTTPS पर खोलकर page को एक बार reload करें।');
-  });
-  closeBtn?.addEventListener('click', hideInstall);
-
-  window.addEventListener('appinstalled', function(){
-    hideInstall();
-    deferredPrompt=null;
-  });
-
+    alert('Chrome में ⋮ → Install app चुनें।');
+  };
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js', {scope:'./'})
-      .then(reg=>reg.update().catch(()=>{}))
-      .catch(()=>{});
+    navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(r=>r.update()).catch(()=>{});
   }
 })();
 </script>
+
 </body>');
   w.document.close();
 }

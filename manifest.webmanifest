@@ -1,13 +1,17 @@
 {
   "name": "JAKHAR DEFENCE ACADEMY",
   "short_name": "JDA Academy",
-  "description": "JAKHAR DEFENCE ACADEMY - Academy Management Software",
-  "start_url": "./index.html",
+  "id": "./",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
   "orientation": "portrait",
-  "background_color": "#06295b",
-  "theme_color": "#06295b",
+  "background_color": "#08245a",
+  "theme_color": "#08245a",
   "lang": "hi",
   "categories": [
     "education",
