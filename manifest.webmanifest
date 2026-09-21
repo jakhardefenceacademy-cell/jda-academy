@@ -6,17 +6,12 @@
   "scope": "./",
   "display": "standalone",
   "display_override": [
-    "window-controls-overlay",
     "standalone"
   ],
   "orientation": "portrait",
   "background_color": "#08245a",
   "theme_color": "#08245a",
   "lang": "hi",
-  "categories": [
-    "education",
-    "productivity"
-  ],
   "icons": [
     {
       "src": "./icon-192.png",
