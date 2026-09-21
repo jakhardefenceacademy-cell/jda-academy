@@ -135,78 +135,9 @@ body.jdaLocked{overflow:hidden}.jdaLogout{position:fixed;right:10px;bottom:10px;
 /* V24 SHARE & DOWNLOAD CENTER */
 .shareGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.shareTile{border:1px solid #dbe2eb;border-radius:14px;padding:14px;background:#fff;box-shadow:0 3px 10px #0001}.shareTile h3{margin:0 0 6px;color:var(--jda-navy)}.shareLink{width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccd6e4;border-radius:9px;background:#f7f9fc}.shareNote{font-size:12px;color:#68758a}@media(max-width:700px){.shareGrid{grid-template-columns:1fr 1fr}}
 </style>
-<style id='JDA_HARD_MOBILE_FIX'>
-/* JDA FINAL HARD MOBILE FIX */
-html,body{
-  width:100% !important;
-  max-width:100% !important;
-  min-width:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-  overflow-x:hidden !important;
-}
-body *{min-width:0}
-header,main,footer,.top,nav,.page,.card{
-  width:100% !important;
-  max-width:100% !important;
-}
-main{margin:0 !important;padding:8px !important}
-nav{overflow-x:auto !important;overflow-y:hidden !important}
-.page{overflow:hidden !important}
-.card{overflow:hidden !important}
-.shareGrid{
-  display:grid !important;
-  grid-template-columns:minmax(0,1fr) !important;
-  width:100% !important;
-  max-width:100% !important;
-  gap:10px !important;
-}
-.shareTile{
-  width:100% !important;
-  max-width:100% !important;
-  min-width:0 !important;
-  overflow:hidden !important;
-}
-.actions{
-  width:100% !important;
-  max-width:100% !important;
-  display:flex !important;
-  flex-wrap:wrap !important;
-  gap:6px !important;
-}
-.actions .btn{
-  max-width:100% !important;
-  min-width:0 !important;
-  white-space:normal !important;
-  overflow-wrap:anywhere !important;
-}
-input,select,textarea{
-  max-width:100% !important;
-  min-width:0 !important;
-}
-img,video,iframe,canvas{
-  max-width:100% !important;
-}
-dialog{
-  width:calc(100vw - 20px) !important;
-  max-width:calc(100vw - 20px) !important;
-  margin:auto !important;
-}
-.modal{
-  width:100% !important;
-  max-width:100% !important;
-  overflow:auto !important;
-}
-@media(max-width:700px){
-  .top{width:100% !important;flex-wrap:wrap !important}
-  .hero,.grid,.form,.twoCol,.profileGrid,.v23grid{
-    grid-template-columns:minmax(0,1fr) !important;
-  }
-  .shareGrid{grid-template-columns:minmax(0,1fr) !important}
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .shareTile h3{font-size:18px}
-  .pageBack{width:100% !important}
-}
+
+<style id="JDA_FINAL_HARD_FIX">
+html,body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}*{box-sizing:border-box;min-width:0}body{margin:0}.page,.card,section,main,header,footer,nav{max-width:100%!important}.card{overflow:hidden}.shareGrid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.shareTile{min-width:0!important;max-width:100%!important;overflow:hidden}.shareTile .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere}.hero{grid-template-columns:minmax(0,1fr) 230px}.grid,.form,.v23grid,.twoCol{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.quickGrid{grid-template-columns:repeat(4,minmax(0,1fr))}.featureGrid{grid-template-columns:repeat(4,minmax(0,1fr))}.stats,.statGrid{grid-template-columns:repeat(4,minmax(0,1fr))}.shareLink,input,select,textarea{max-width:100%!important}.tableWrap,.table,.v23table{max-width:100%;overflow-x:auto}@media(max-width:700px){main{padding-left:7px!important;padding-right:7px!important}.hero,.grid,.form,.v23grid,.twoCol{grid-template-columns:minmax(0,1fr)!important}.shareGrid{grid-template-columns:minmax(0,1fr)!important}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.quickGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.featureGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats,.statGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.heroLogo{height:190px!important}.director img{height:210px!important}.page{width:100%!important}.actions{max-width:100%;flex-wrap:wrap}.btn,button{max-width:100%;white-space:normal;overflow-wrap:anywhere}}
 </style>
 </head>
 <body class="">
@@ -1011,24 +942,7 @@ async function uploadDirectorPhoto(input){
 function viewDirectorPhoto(){
   const src=(data.settings&&data.settings.directorPhoto)||'./Director_Moola_Ram.jpg';
   const w=window.open('','_blank'); if(!w)return alert('Popup blocked');
-  w.document.write('<title>Director Photo</title><body style="margin:0;background:#111;display:flex;align-items:center;justify-content:center;height:100vh"><img src="'+src+'" style="max-width:95%;max-height:95%;object-fit:contain">
-<script id="JDA_HARD_PWA_BOOT">
-(function(){
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(function(){});
-  }
-  let p=null;
-  window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault();p=e;window.__JDAInstallPrompt=e;
-  });
-  window.JDA_INSTALL_APP=async function(){
-    if(p){p.prompt();try{await p.userChoice}catch(_){}p=null;return true;}
-    alert('Chrome ⋮ → Install app चुनें।');
-    return false;
-  };
-})();
-</script>
-</body>');
+  w.document.write('<title>Director Photo</title><body style="margin:0;background:#111;display:flex;align-items:center;justify-content:center;height:100vh"><img src="'+src+'" style="max-width:95%;max-height:95%;object-fit:contain"></body>');
   w.document.close();
 }
 function deleteDirectorPhoto(){
