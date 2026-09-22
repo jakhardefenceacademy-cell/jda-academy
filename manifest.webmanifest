@@ -1,17 +1,12 @@
 {
   "name": "JAKHAR DEFENCE ACADEMY",
   "short_name": "JDA Academy",
-  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "display_override": [
-    "standalone"
-  ],
   "orientation": "portrait",
-  "theme_color": "#08245a",
-  "background_color": "#eef3f8",
-  "lang": "en",
+  "theme_color": "#06295b",
+  "background_color": "#eef4f2",
   "icons": [
     {
       "src": "./icon-192.png",
