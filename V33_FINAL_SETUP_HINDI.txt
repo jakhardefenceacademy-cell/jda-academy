@@ -1,9 +1,0 @@
-JDA V33 FINAL UPDATE FIXED — Hindi Setup
-
-• ZIP extract करें और index.html खोलें।
-• Local content:// mode में manual/local data चलेगा।
-• PWA automatic update और Google OAuth के लिए HTTPS domain जरूरी है।
-• ऊपर ↻ Check Update या Settings → Check App Update इस्तेमाल करें।
-• Offline में data local रहेगा; Internet आने पर configured cloud sync automatic attempt करेगा।
-• Google Drive के लिए Gmail address से अलग Google OAuth/authorization जरूरी है। Gmail password software में कभी न डालें।
-• Logo, Director photo और Academy banner ZIP में bundled हैं।
