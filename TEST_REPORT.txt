@@ -1,6 +1,0 @@
-JDA V35 FINAL STABLE
-JS blocks: 8; syntax: PASS
-Missing getElementById refs: []
-HTTPS URLs only in source: PASS
-Security files: PASS
-Service worker cache: JDA-V35-STABLE-1
