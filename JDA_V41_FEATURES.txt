@@ -1,0 +1,2 @@
+JDA V41 FINAL
+Separate Academy and Parents WhatsApp sharing; automatic + manual message modes; normal WhatsApp links only; parent messages can use saved student/parent data; single Academy Location Share section retained.

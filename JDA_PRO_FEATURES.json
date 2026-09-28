@@ -1,0 +1,26 @@
+{
+  "version": "JDA PRO FINAL",
+  "automatic": true,
+  "manual": true,
+  "features": [
+    "dashboard",
+    "students",
+    "parents",
+    "fees",
+    "attendance",
+    "tests",
+    "study material",
+    "gallery",
+    "vacancy",
+    "सामान्य ज्ञान / समाचार",
+    "notices",
+    "selected candidates",
+    "reports",
+    "academy WhatsApp",
+    "parents WhatsApp",
+    "backup/restore",
+    "PWA"
+  ],
+  "location_share": "single location only",
+  "running_time": "HH:MM:SS"
+}
